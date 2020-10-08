@@ -18,10 +18,22 @@ from django.contrib import admin
 from django.urls import path
 
 from . import settings
-from .views import home_page
+from .views import *
 
 urlpatterns = [
     path('', home_page),
+
+    path('top-header', top_header, name="TopHeader"),
+    path('bottom-header', bottom_header, name="BottomHeader"),
+    path('top-footer', top_footer, name="TopFooter"),
+    path('bottom-footer', bottom_footer, name="BottomFooter"),
+    path('slider', slider, name="Slider"),
+    path('double-banner', double_banner, name="DoubleBanner"),
+    path('banner', banner, name="Banner"),
+    path('testimonial', testimonial, name="Testimonial"),
+    path('shop-info', shop_info, name="ShopInfo"),
+    path('news-letter', news_letter, name="NewsLetter"),
+
     path('admin/', admin.site.urls)
 ]
 

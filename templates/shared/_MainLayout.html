@@ -1,0 +1,36 @@
+{% load static %}
+{% load render_partial %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include 'shared/_MetaTags.html' %}
+    {% include 'shared/_HeaderRefences.html' %}
+    {% block header_ref %}{% endblock %}
+<title>{{ title }}</title>
+</head>
+
+<body dir="rtl">
+
+{% include 'shared/_Loader.html' %}
+
+<header class="header_wrap fixed-top header_with_topbar">
+    {% render_partial 'TopHeader' %}
+    {% render_partial 'BottomHeader' %}
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="footer_dark">
+    {% render_partial 'TopFooter' %}
+    {% render_partial 'BottomFooter' %}
+</footer>
+
+<a href="#" class="scrollup" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
+
+{% include 'shared/_FooterRefences.html' %}
+{% block footer_ref %}{% endblock %}
+
+</body>
+</html>
