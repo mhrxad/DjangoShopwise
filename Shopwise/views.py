@@ -11,6 +11,11 @@ def top_header(request, *args, **kwargs):
     }
     return render(request, 'shared/_TopHeader.html', context)
 
+def middle_header(request, *args, **kwargs):
+    context = {
+    }
+    return render(request, 'shared/_MiddleHeader.html', context)
+
 def bottom_header(request, *args, **kwargs):
     context = {
     }
