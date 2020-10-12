@@ -9,6 +9,7 @@ urlpatterns = [
     path('', home_page),
 
     path('', include('account_app.urls')),
+    path('', include('products_app.urls')),
 
     path('top-header', top_header, name="TopHeader"),
     path('middle-header', middle_header, name="MiddleHeader"),
