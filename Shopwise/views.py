@@ -31,10 +31,6 @@ def bottom_footer(request, *args, **kwargs):
     }
     return render(request, 'shared/_BottomFooter.html', context)
 
-def slider(request, *args, **kwargs):
-    context = {
-    }
-    return render(request, 'shared/_Slider.html', context)
 
 def double_banner(request, *args, **kwargs):
     context = {

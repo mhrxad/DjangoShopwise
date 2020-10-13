@@ -43,7 +43,6 @@ class ProductsListByCategory(ListView):
     paginate_by = 6
 
     def get_queryset(self):
-        print(self.kwargs)
         category_name = self.kwargs['category_name']
         category = ProductCategory.objects.filter(name__iexact=category_name).first()
         if category is None:

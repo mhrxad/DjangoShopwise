@@ -10,13 +10,13 @@ urlpatterns = [
 
     path('', include('account_app.urls')),
     path('', include('products_app.urls')),
+    path('', include('slider_app.urls')),
 
     path('top-header', top_header, name="TopHeader"),
     path('middle-header', middle_header, name="MiddleHeader"),
     path('bottom-header', bottom_header, name="BottomHeader"),
     path('top-footer', top_footer, name="TopFooter"),
     path('bottom-footer', bottom_footer, name="BottomFooter"),
-    path('slider', slider, name="Slider"),
     path('double-banner', double_banner, name="DoubleBanner"),
     path('banner', banner, name="Banner"),
     path('testimonial', testimonial, name="Testimonial"),
