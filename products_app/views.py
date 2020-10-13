@@ -5,6 +5,18 @@ from django.views.generic import ListView
 from .models import *
 
 
+# region " Partial View Code Behind "
+def products_categories_partial(request):
+    categories = ProductCategory.objects.all()
+    context = {
+        'categories': categories
+    }
+    return render(request, 'products_categories_partial.html', context)
+
+
+# endregion
+
+
 class ProductsList(ListView):
     template_name = 'products_list.html'
     paginate_by = 6
@@ -24,6 +36,19 @@ def product_detail(request, *args, **kwargs):
         'product': product
     }
     return render(request, 'product_detail.html', context)
+
+
+class ProductsListByCategory(ListView):
+    template_name = 'products_list.html'
+    paginate_by = 6
+
+    def get_queryset(self):
+        print(self.kwargs)
+        category_name = self.kwargs['category_name']
+        category = ProductCategory.objects.filter(name__iexact=category_name).first()
+        if category is None:
+            raise Http404('صفحه ی مورد نظر یافت نشد')
+        return Product.objects.get_products_by_category(category_name)
 
 
 class SearchProductsView(ListView):

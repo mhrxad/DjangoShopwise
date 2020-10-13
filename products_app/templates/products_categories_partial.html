@@ -1,0 +1,10 @@
+<h5 class="widget_title">دسته بندی ها</h5>
+<ul class="widget_categories">
+    {% for category in categories %}
+        <li><a href="/products/{{ category.name }}"><span class="categories_name">{{ category.title }}</span><span
+            class="categories_num">(1)</span></a></li>
+    {% endfor %}
+
+
+
+</ul>

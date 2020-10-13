@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django_render_partial',
 
     'account_app',
-    'products_app'
+    'products_app',
+    'tag_app',
+    'category_app'
 ]
 
 MIDDLEWARE = [
