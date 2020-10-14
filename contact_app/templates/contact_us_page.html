@@ -1,0 +1,140 @@
+{% extends 'shared/_MainLayout.html' %}
+{% load static %}
+
+
+<!--#region " Breadcrumb "  -->
+{% block breadcrumb %}
+    <div class="breadcrumb_section bg_gray page-title-mini">
+        <div class="container"><!-- STRART CONTAINER -->
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="page-title">
+                        <h1>{{ title }}</h1>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <ol class="breadcrumb justify-content-md-end">
+                        <li class="breadcrumb-item"><a href="#">خانه</a></li>
+                        <li class="breadcrumb-item active">{{ title }}</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- END CONTAINER-->
+    </div>
+{% endblock %}
+<!--#endregion -->
+
+
+<!--#region " Content "  -->
+{% block content %}
+
+
+    <!-- START SECTION CONTACT -->
+    <div class="section pb_70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-md-6">
+                    <div class="contact_wrap contact_style3">
+                        <div class="contact_icon">
+                            <i class="linearicons-map2"></i>
+                        </div>
+                        <div class="contact_text">
+                            <span>آدرس</span>
+                            <p>ایران , تهران , زعفرانیه , ساختمان هستی</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="contact_wrap contact_style3">
+                        <div class="contact_icon">
+                            <i class="linearicons-envelope-open"></i>
+                        </div>
+                        <div class="contact_text">
+                            <span>آدرس ایمیل</span>
+                            <a href="mailto:info@sitename.com">info@yourmail.com </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="contact_wrap contact_style3">
+                        <div class="contact_icon">
+                            <i class="linearicons-tablet2"></i>
+                        </div>
+                        <div class="contact_text">
+                            <span>تلفن</span>
+                            <p>021 - 1234567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END SECTION CONTACT -->
+
+    <!-- START SECTION CONTACT -->
+    <div class="section pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="heading_s1">
+                        <h2>تماس با ما</h2>
+                    </div>
+                    <p class="leads">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
+                        گرافیک است.</p>
+                    <div class="field_form">
+                        <form method="post">
+                            {% csrf_token %}
+
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    {{ contact_form.full_name }}
+                                    {% for error in contact_form.full_name.errors %}
+                                        <p class="text-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {{ contact_form.email }}
+                                    {% for error in contact_form.email.errors %}
+                                        <p class="text-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {{ contact_form.phone_number }}
+                                    {% for error in contact_form.phone_number.errors %}
+                                        <p class="text-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group col-md-6">
+                                    {{ contact_form.subject }}
+                                    {% for error in contact_form.subject.errors %}
+                                        <p class="text-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="form-group col-md-12">
+                                    {{ contact_form.text }}
+                                    {% for error in contact_form.text.errors %}
+                                        <p class="text-danger">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-fill-out" value="Submit">ارسال</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <div id="alert-msg" class="alert-msg text-center"></div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-2 pt-lg-0 mt-4 mt-lg-0">
+                    <div id="map" class="contact_map2" data-zoom="14" data-latitude="35.804357"
+                         data-longitude="51.414715" data-icon="assets/images/marker.png"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END SECTION CONTACT -->
+
+
+{% endblock %}
+<!--#endregion -->
