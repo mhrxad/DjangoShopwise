@@ -1,9 +1,19 @@
+import itertools
+
 from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import ListView
 
 from .models import *
 
+
+# region " functions "
+def my_grouper(n, iterable):
+    args = [iter(iterable)] * n
+    return ([e for e in t if e is not None] for t in itertools.zip_longest(*args))
+
+
+# endregion
 
 # region " Partial View Code Behind "
 def products_categories_partial(request):
@@ -26,14 +36,20 @@ class ProductsList(ListView):
 
 
 def product_detail(request, *args, **kwargs):
-    product_id = kwargs['productId']
-    product = Product.objects.get_by_id(product_id)
+    selected_product_id = kwargs['productId']
+
+    product = Product.objects.get_by_id(selected_product_id)
 
     if product is None or not product.active:
         raise Http404('محصول مورد نظر یافت نشد')
 
+    galleries = ProductGallery.objects.filter(product_id=selected_product_id)
+
+    # grouped_galleries = list(my_grouper(3, galleries))
+
     context = {
-        'product': product
+        'product': product,
+        'galleries': galleries
     }
     return render(request, 'product_detail.html', context)
 
