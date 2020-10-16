@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'tag_app',
     'category_app',
     'slider_app',
-    'contact_app'
+    'contact_app',
+    'setting_app',
+    'order_app'
 ]
 
 MIDDLEWARE = [

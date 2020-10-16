@@ -4,6 +4,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.views.generic import ListView
 
+from order_app.forms import UserNewOrderForm
 from .models import *
 
 
@@ -38,6 +39,8 @@ class ProductsList(ListView):
 def product_detail(request, *args, **kwargs):
     selected_product_id = kwargs['productId']
 
+    new_order_form = UserNewOrderForm(request.POST or None, initial={'product_id': selected_product_id})
+
     product = Product.objects.get_by_id(selected_product_id)
 
     if product is None or not product.active:
@@ -46,13 +49,13 @@ def product_detail(request, *args, **kwargs):
     related_products = Product.objects.get_queryset().filter(categories__product=product).distinct()
 
     galleries = ProductGallery.objects.filter(product_id=selected_product_id)
-
     # grouped_galleries = list(my_grouper(3, galleries))
 
     context = {
         'product': product,
         'galleries': galleries,
-        'related_products': related_products
+        'related_products': related_products,
+        'new_order_form': new_order_form
     }
     return render(request, 'product_detail.html', context)
 

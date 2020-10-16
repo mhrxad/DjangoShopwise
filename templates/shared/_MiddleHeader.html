@@ -4,8 +4,8 @@
     <div class="container">
         <div class="nav_block">
             <a class="navbar-brand" href="index.html">
-                <img class="logo_light" src="{% static 'images/logo_light.png' %}" alt="logo">
-                <img class="logo_dark" src="{% static 'images/logo_dark.png' %}" alt="logo">
+                <img class="logo_light" src="{{ setting.logo.url }}" alt="logo">
+                <img class="logo_dark" src="{{ setting.logo.url }}" alt="logo">
             </a>
 
             {% include 'Components/search_products_input_component.html' %}

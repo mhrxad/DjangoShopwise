@@ -113,22 +113,29 @@
                                 </div>
                             </div>
                             <hr/>
-                            <div class="cart_extra">
-                                <div class="cart-product-quantity">
-                                    <div class="quantity">
-                                        <input type="button" value="-" class="minus">
-                                        <input type="text" name="quantity" value="1" title="Qty" class="qty" size="4">
-                                        <input type="button" value="+" class="plus">
+                            <form method="post" action="/add-user-order">
+                                {% csrf_token %}
+                                {{ new_order_form.product_id }}
+
+                                <div class="cart_extra">
+                                    <div class="cart-product-quantity">
+                                        <div class="quantity">
+                                            <input type="button" value="-" class="minus">
+                                            {{ new_order_form.count }}
+{#                                            <input type="text" name="quantity" value="1" title="Qty" class="qty"#}
+{#                                                   size="4">#}
+                                            <input type="button" value="+" class="plus">
+                                        </div>
+                                    </div>
+                                    <div class="cart_btn">
+                                        <button class="btn btn-fill-out btn-addtocart" type="submit"><i
+                                                class="icon-basket-loaded"></i> افزودن به سبد خرید
+                                        </button>
+                                        <a class="add_compare" href="#"><i class="icon-shuffle"></i></a>
+                                        <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
                                     </div>
                                 </div>
-                                <div class="cart_btn">
-                                    <button class="btn btn-fill-out btn-addtocart" type="button"><i
-                                            class="icon-basket-loaded"></i> افزودن به سبد خرید
-                                    </button>
-                                    <a class="add_compare" href="#"><i class="icon-shuffle"></i></a>
-                                    <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
-                                </div>
-                            </div>
+                            </form>
                             <hr/>
                             <ul class="product-meta">
                                 <li>کد: <a href="#">BE45VGRT</a></li>
