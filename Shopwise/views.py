@@ -1,7 +1,6 @@
 # region " imports "
 from django.shortcuts import render
 
-
 # endregion
 
 
@@ -89,5 +88,14 @@ def home_page(request):
         'title': 'Shopwise'
     }
     return render(request, 'Pages/home.html', context)
+
+
+def about_us_page(request):
+    site_setting = SiteSetting.objects.first()
+    context = {
+        'title': 'درباره ما',
+        'setting': site_setting
+    }
+    return render(request, 'Pages/AboutUs.html', context)
 
 # endregion

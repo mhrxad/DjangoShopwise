@@ -6,7 +6,8 @@ from . import settings
 from .views import *
 
 urlpatterns = [
-    path('', home_page),
+    path('', home_page, name='home'),
+    path('about-us', about_us_page, name='AboutUs'),
 
     path('', include('account_app.urls')),
     path('', include('products_app.urls')),
